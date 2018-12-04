@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="Default" parallel="classes">
+    <test name="Test">
+        <parameter name="browser" value="Chrome" />
+        <classes>
+            <class name="gl.testing.tests.AlfabankTest" />
+            <class name="gl.testing.tests.PrivatbankTest" />
+            <class name="gl.testing.tests.ProcreditbankTest" />
+            <class name="gl.testing.tests.RaiffeisenbankTest" />
+        </classes>
+    </test>
+</suite>
