@@ -10,42 +10,34 @@ import org.testng.annotations.Test;
 
 import java.math.BigDecimal;
 
-import static com.codeborne.selenide.Selenide.open;
-
 public class PrivatbankTest {
-    private static HryvnatodayPage hryvnatodayPage;
-    private static PrivatbankPage privatbankPage;
-
-
     @Test
-    public void test1_privatbank() {
+    public void testUsdExchange() {
+        HryvnatodayPage hp = new HryvnatodayPage();
+        hp.chooseCurrency(Currency.USD);
+        BigDecimal rateHryvnatodayBuyUsd = hp.getRate(Bank.PRIVATBANK, Type.BUY);
+        BigDecimal rateHryvnatodaySellUsd = hp.getRate(Bank.PRIVATBANK, Type.SELL);
 
-        open("https://hryvna.today");
-        hryvnatodayPage = new HryvnatodayPage();
-        chooseCurrency(Currency.USD);
-        BigDecimal hryvnatodayPage_BUY_USD =
-                hryvnatodayPage.getRate(Bank.PRIVATBANK, Type.BUY);
-        chooseCurrency(Currency.EUR);
-        BigDecimal hryvnatodayPage_SELL_USD =
-                hryvnatodayPage.getRate(Bank.PRIVATBANK, Type.SELL);
+        PrivatbankPage pp = new PrivatbankPage();
+        BigDecimal ratePrivatbankBuyUsd = pp.getRate(Currency.USD, Type.BUY);
+        BigDecimal ratePrivatbankSellUsd = pp.getRate(Currency.USD, Type.SELL);
 
-        open("https://privatbank.ua");
-        privatbankPage = new PrivatbankPage();
-        BigDecimal privatbank_BUY_USD = privatbankPage.getRate(Currency.USD, Type.BUY);
-        BigDecimal privatbank_SELL_USD = privatbankPage.getRate(Currency.EUR, Type.SELL);
-
-        Assert.assertEquals(hryvnatodayPage_BUY_USD, privatbank_BUY_USD);
-        Assert.assertEquals(hryvnatodayPage_SELL_USD, privatbank_SELL_USD);
+        Assert.assertEquals(rateHryvnatodayBuyUsd, ratePrivatbankBuyUsd);
+        Assert.assertEquals(rateHryvnatodaySellUsd, ratePrivatbankSellUsd);
     }
 
-    private static void chooseCurrency(Currency currency) {
-        switch (currency) {
-            case USD:
-                hryvnatodayPage.selectorUSD.click();
-                break;
-            case EUR:
-                hryvnatodayPage.selectorEUR.click();
-                break;
-        }
+    @Test
+    public void testEuroExchange() {
+        HryvnatodayPage hp = new HryvnatodayPage();
+        hp.chooseCurrency(Currency.EUR);
+        BigDecimal rateHryvnatodayBuyEur = hp.getRate(Bank.PRIVATBANK, Type.BUY);
+        BigDecimal rateHryvnatodaySellEur = hp.getRate(Bank.PRIVATBANK, Type.SELL);
+
+        PrivatbankPage pp = new PrivatbankPage();
+        BigDecimal ratePrivatbankBuyEur = pp.getRate(Currency.EUR, Type.BUY);
+        BigDecimal ratePrivatbankSellEur = pp.getRate(Currency.EUR, Type.SELL);
+
+        Assert.assertEquals(rateHryvnatodayBuyEur, ratePrivatbankBuyEur);
+        Assert.assertEquals(rateHryvnatodaySellEur, ratePrivatbankSellEur);
     }
 }

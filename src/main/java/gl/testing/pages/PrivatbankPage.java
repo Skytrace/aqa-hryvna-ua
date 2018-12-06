@@ -9,6 +9,7 @@ import java.math.RoundingMode;
 
 import static com.codeborne.selenide.Selectors.byId;
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.open;
 
 public class PrivatbankPage {
     private SelenideElement rateBuyUSD = $(byId("USD_buy"));
@@ -16,25 +17,22 @@ public class PrivatbankPage {
     private SelenideElement rateBuyEUR = $(byId("EUR_buy"));
     private SelenideElement rateSellEUR = $(byId("EUR_sell"));
 
-    public BigDecimal getRate(Currency currency, Type type) {
-        switch (currency) {
-            case USD:
-                switch (type) {
-                    case BUY:
-                        return getNumber(rateBuyUSD.text());
-                    case SELL:
-                        return getNumber(rateSellUSD.text());
-                }
-            case EUR:
-                switch (type) {
-                    case BUY:
-                        return getNumber(rateBuyEUR.text());
-                    case SELL:
-                        return getNumber(rateSellEUR.text());
-                }
-        }
+    public PrivatbankPage() {
+        open("https://privatbank.ua");
+    }
 
-        return null;
+    public BigDecimal getRate(Currency currency, Type type) {
+        if (currency == Currency.USD && type == Type.BUY) {
+            return getNumber(rateBuyUSD.text());
+        } else if (currency == Currency.USD && type == Type.SELL) {
+            return getNumber(rateSellUSD.text());
+        } else if (currency == Currency.EUR && type == Type.BUY) {
+            return getNumber(rateBuyEUR.text());
+        } else if (currency == Currency.EUR && type == Type.SELL) {
+            return getNumber(rateSellEUR.text());
+        } else {
+            throw new IllegalArgumentException("Unknown currency or type.");
+        }
     }
 
     private static BigDecimal getNumber(String s) {
