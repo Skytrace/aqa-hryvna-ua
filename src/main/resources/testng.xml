@@ -5,10 +5,7 @@
     <test name="Test">
         <parameter name="browser" value="Chrome" />
         <classes>
-            <class name="gl.testing.tests.AlfabankTest" />
             <class name="gl.testing.tests.PrivatbankTest" />
-            <class name="gl.testing.tests.ProcreditbankTest" />
-            <class name="gl.testing.tests.RaiffeisenbankTest" />
         </classes>
     </test>
 </suite>
