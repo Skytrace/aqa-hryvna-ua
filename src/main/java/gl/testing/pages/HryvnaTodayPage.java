@@ -14,7 +14,7 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$x;
 import static com.codeborne.selenide.Selenide.open;
 
-public class HryvnatodayPage {
+public class HryvnaTodayPage {
     public SelenideElement selectorUSD = $x("//a[@href='#usd']");
     public SelenideElement selectorEUR = $x("//a[@href='#eur']");
 
@@ -30,7 +30,7 @@ public class HryvnatodayPage {
         dataIds.put(Bank.PROCREDITBANK, 12);
     }
 
-    public HryvnatodayPage() {
+    public HryvnaTodayPage() {
         open("https://hryvna.today");
     }
 

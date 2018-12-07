@@ -1,43 +1,44 @@
 package gl.testing.tests;
 
+import static org.testng.Assert.assertEquals;
+
+import gl.testing.pages.HryvnaTodayPage;
+import gl.testing.pages.PrivatBankPage;
 import gl.testing.pages.enums.Bank;
 import gl.testing.pages.enums.Currency;
 import gl.testing.pages.enums.Type;
-import gl.testing.pages.HryvnatodayPage;
-import gl.testing.pages.PrivatbankPage;
-import org.testng.Assert;
+import java.math.BigDecimal;
 import org.testng.annotations.Test;
 
-import java.math.BigDecimal;
+public class PrivatbankTest extends BasicSteps {
 
-public class PrivatbankTest {
-    @Test
-    public void testUsdExchange() {
-        HryvnatodayPage hp = new HryvnatodayPage();
-        hp.chooseCurrency(Currency.USD);
-        BigDecimal rateHryvnatodayBuyUsd = hp.getRate(Bank.PRIVATBANK, Type.BUY);
-        BigDecimal rateHryvnatodaySellUsd = hp.getRate(Bank.PRIVATBANK, Type.SELL);
+  @Test
+  public void testUsdExchange() {
+    PrivatBankPage privatBankPage = new PrivatBankPage();
+    BigDecimal expectedBuyUsd = privatBankPage.getCurrencyRatesPanel().getRate(Currency.USD, Type.BUY);
+    BigDecimal expectedSellUsd = privatBankPage.getCurrencyRatesPanel().getRate(Currency.USD, Type.SELL);
 
-        PrivatbankPage pp = new PrivatbankPage();
-        BigDecimal ratePrivatbankBuyUsd = pp.getRate(Currency.USD, Type.BUY);
-        BigDecimal ratePrivatbankSellUsd = pp.getRate(Currency.USD, Type.SELL);
+    HryvnaTodayPage hryvnaTodayPage = new HryvnaTodayPage();
+    hryvnaTodayPage.chooseCurrency(Currency.USD);
+    BigDecimal actualBuyUsd = hryvnaTodayPage.getRate(Bank.PRIVATBANK, Type.BUY);
+    BigDecimal actualSellUsd = hryvnaTodayPage.getRate(Bank.PRIVATBANK, Type.SELL);
 
-        Assert.assertEquals(rateHryvnatodayBuyUsd, ratePrivatbankBuyUsd);
-        Assert.assertEquals(rateHryvnatodaySellUsd, ratePrivatbankSellUsd);
-    }
+    assertEquals(actualBuyUsd, expectedBuyUsd, "Actual rate is not as expected");
+    assertEquals(actualSellUsd, expectedSellUsd, "Actual rate is not as expected");
+  }
 
-    @Test
-    public void testEuroExchange() {
-        HryvnatodayPage hp = new HryvnatodayPage();
-        hp.chooseCurrency(Currency.EUR);
-        BigDecimal rateHryvnatodayBuyEur = hp.getRate(Bank.PRIVATBANK, Type.BUY);
-        BigDecimal rateHryvnatodaySellEur = hp.getRate(Bank.PRIVATBANK, Type.SELL);
+  @Test
+  public void testEuroExchange() {
+    PrivatBankPage privatBankPage = new PrivatBankPage();
+    BigDecimal expectedBuyEur = privatBankPage.getCurrencyRatesPanel().getRate(Currency.EUR, Type.BUY);
+    BigDecimal expectedSellEur = privatBankPage.getCurrencyRatesPanel().getRate(Currency.EUR, Type.SELL);
 
-        PrivatbankPage pp = new PrivatbankPage();
-        BigDecimal ratePrivatbankBuyEur = pp.getRate(Currency.EUR, Type.BUY);
-        BigDecimal ratePrivatbankSellEur = pp.getRate(Currency.EUR, Type.SELL);
+    HryvnaTodayPage hryvnaTodayPage = new HryvnaTodayPage();
+    hryvnaTodayPage.chooseCurrency(Currency.EUR);
+    BigDecimal actualBuyEur = hryvnaTodayPage.getRate(Bank.PRIVATBANK, Type.BUY);
+    BigDecimal actualSellEur = hryvnaTodayPage.getRate(Bank.PRIVATBANK, Type.SELL);
 
-        Assert.assertEquals(rateHryvnatodayBuyEur, ratePrivatbankBuyEur);
-        Assert.assertEquals(rateHryvnatodaySellEur, ratePrivatbankSellEur);
-    }
+    assertEquals(actualBuyEur, expectedBuyEur, "Actual rate is not as expected");
+    assertEquals(actualSellEur, expectedSellEur, "Actual rate is not as expected");
+  }
 }
