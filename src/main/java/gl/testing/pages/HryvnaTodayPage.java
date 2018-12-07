@@ -2,6 +2,7 @@ package gl.testing.pages;
 
 import com.codeborne.selenide.SelenideElement;
 import gl.testing.pages.enums.Bank;
+import gl.testing.pages.enums.Currency;
 import gl.testing.pages.enums.Type;
 
 import java.math.BigDecimal;
@@ -10,10 +11,12 @@ import java.util.HashMap;
 
 import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.$x;
+import static com.codeborne.selenide.Selenide.open;
 
-public class HryvnatodayPage {
-    public SelenideElement selectorUSD = $(byXpath("//div[1]//div[2]/div[1]/div[2]//li[1]/a"));
-    public SelenideElement selectorEUR = $(byXpath("//div[1]//div[2]/div[1]/div[2]//li[2]/a"));
+public class HryvnaTodayPage {
+    public SelenideElement selectorUSD = $x("//a[@href='#usd']");
+    public SelenideElement selectorEUR = $x("//a[@href='#eur']");
 
     private static final HashMap<Type, Integer> columns = new HashMap<>();
     private static final HashMap<Bank, Integer> dataIds = new HashMap<>();
@@ -27,7 +30,28 @@ public class HryvnatodayPage {
         dataIds.put(Bank.PROCREDITBANK, 12);
     }
 
+    public HryvnaTodayPage() {
+        open("https://hryvna.today");
+    }
+
+    public void chooseCurrency(Currency currency) {
+        switch (currency) {
+            case USD:
+                this.selectorUSD.click();
+                break;
+            case EUR:
+                this.selectorEUR.click();
+                break;
+            default:
+                throw new IllegalArgumentException("Unknown currency.");
+        }
+    }
+
     public BigDecimal getRate(Bank bank, Type type) {
+        if (bank == null || type == null) {
+            throw new IllegalArgumentException("Unknown bank or type.");
+        }
+
         return getRateFromPage(dataIds.get(bank), columns.get(type));
     }
 

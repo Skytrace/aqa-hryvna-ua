@@ -1,51 +1,44 @@
 package gl.testing.tests;
 
+import static org.testng.Assert.assertEquals;
+
+import gl.testing.pages.HryvnaTodayPage;
+import gl.testing.pages.PrivatBankPage;
 import gl.testing.pages.enums.Bank;
 import gl.testing.pages.enums.Currency;
 import gl.testing.pages.enums.Type;
-import gl.testing.pages.HryvnatodayPage;
-import gl.testing.pages.PrivatbankPage;
-import org.testng.Assert;
+import java.math.BigDecimal;
 import org.testng.annotations.Test;
 
-import java.math.BigDecimal;
+public class PrivatbankTest extends BasicSteps {
 
-import static com.codeborne.selenide.Selenide.open;
+  @Test
+  public void testUsdExchange() {
+    PrivatBankPage privatBankPage = new PrivatBankPage();
+    BigDecimal expectedBuyUsd = privatBankPage.getCurrencyRatesPanel().getRate(Currency.USD, Type.BUY);
+    BigDecimal expectedSellUsd = privatBankPage.getCurrencyRatesPanel().getRate(Currency.USD, Type.SELL);
 
-public class PrivatbankTest {
-    private static HryvnatodayPage hryvnatodayPage;
-    private static PrivatbankPage privatbankPage;
+    HryvnaTodayPage hryvnaTodayPage = new HryvnaTodayPage();
+    hryvnaTodayPage.chooseCurrency(Currency.USD);
+    BigDecimal actualBuyUsd = hryvnaTodayPage.getRate(Bank.PRIVATBANK, Type.BUY);
+    BigDecimal actualSellUsd = hryvnaTodayPage.getRate(Bank.PRIVATBANK, Type.SELL);
 
+    assertEquals(actualBuyUsd, expectedBuyUsd, "Actual rate is not as expected");
+    assertEquals(actualSellUsd, expectedSellUsd, "Actual rate is not as expected");
+  }
 
-    @Test
-    public void test1_privatbank() {
+  @Test
+  public void testEuroExchange() {
+    PrivatBankPage privatBankPage = new PrivatBankPage();
+    BigDecimal expectedBuyEur = privatBankPage.getCurrencyRatesPanel().getRate(Currency.EUR, Type.BUY);
+    BigDecimal expectedSellEur = privatBankPage.getCurrencyRatesPanel().getRate(Currency.EUR, Type.SELL);
 
-        open("https://hryvna.today");
-        hryvnatodayPage = new HryvnatodayPage();
-        chooseCurrency(Currency.USD);
-        BigDecimal hryvnatodayPage_BUY_USD =
-                hryvnatodayPage.getRate(Bank.PRIVATBANK, Type.BUY);
-        chooseCurrency(Currency.EUR);
-        BigDecimal hryvnatodayPage_SELL_USD =
-                hryvnatodayPage.getRate(Bank.PRIVATBANK, Type.SELL);
+    HryvnaTodayPage hryvnaTodayPage = new HryvnaTodayPage();
+    hryvnaTodayPage.chooseCurrency(Currency.EUR);
+    BigDecimal actualBuyEur = hryvnaTodayPage.getRate(Bank.PRIVATBANK, Type.BUY);
+    BigDecimal actualSellEur = hryvnaTodayPage.getRate(Bank.PRIVATBANK, Type.SELL);
 
-        open("https://privatbank.ua");
-        privatbankPage = new PrivatbankPage();
-        BigDecimal privatbank_BUY_USD = privatbankPage.getRate(Currency.USD, Type.BUY);
-        BigDecimal privatbank_SELL_USD = privatbankPage.getRate(Currency.EUR, Type.SELL);
-
-        Assert.assertEquals(hryvnatodayPage_BUY_USD, privatbank_BUY_USD);
-        Assert.assertEquals(hryvnatodayPage_SELL_USD, privatbank_SELL_USD);
-    }
-
-    private static void chooseCurrency(Currency currency) {
-        switch (currency) {
-            case USD:
-                hryvnatodayPage.selectorUSD.click();
-                break;
-            case EUR:
-                hryvnatodayPage.selectorEUR.click();
-                break;
-        }
-    }
+    assertEquals(actualBuyEur, expectedBuyEur, "Actual rate is not as expected");
+    assertEquals(actualSellEur, expectedSellEur, "Actual rate is not as expected");
+  }
 }
