@@ -10,9 +10,7 @@ import java.math.RoundingMode;
 import java.util.HashMap;
 
 import static com.codeborne.selenide.Selectors.byXpath;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.$x;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 
 public class HryvnaTodayPage {
     public SelenideElement selectorUSD = $x("//a[@href='#usd']");
