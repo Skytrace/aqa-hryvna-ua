@@ -8,11 +8,11 @@ import gl.testing.pages.enums.Bank;
 import gl.testing.pages.enums.Currency;
 import gl.testing.pages.enums.Type;
 import java.math.BigDecimal;
+
 import org.testng.annotations.Test;
 
-public class PrivatbankTest extends BasicSteps {
-
-  @Test
+public class PrivatBankTest extends BasicSteps {
+  @Test(description = "Exchange rate test: PrivatBank vs HryvnaToday; currency: USD")
   public void testUsdExchange() {
     PrivatBankPage privatBankPage = new PrivatBankPage();
     BigDecimal expectedBuyUsd = privatBankPage.getCurrencyRatesPanel().getRate(Currency.USD, Type.BUY);
@@ -27,7 +27,7 @@ public class PrivatbankTest extends BasicSteps {
     assertEquals(actualSellUsd, expectedSellUsd, "Actual rate is not as expected");
   }
 
-  @Test
+  @Test(description = "Exchange rate test: PrivatBank vs HryvnaToday; currency: EUR")
   public void testEuroExchange() {
     PrivatBankPage privatBankPage = new PrivatBankPage();
     BigDecimal expectedBuyEur = privatBankPage.getCurrencyRatesPanel().getRate(Currency.EUR, Type.BUY);
