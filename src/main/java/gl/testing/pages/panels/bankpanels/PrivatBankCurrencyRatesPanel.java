@@ -10,7 +10,8 @@ import gl.testing.pages.panels.CurrencyRatesPanelCurrencyType;
 import java.util.HashMap;
 
 public class PrivatBankCurrencyRatesPanel extends CurrencyRatesPanelCurrencyType {
-    private static final SelenideElement TBL_EXCHANGE_RATES = $x("//*[@id=\"widget123\"]/div[1]/article/div[1]/div/table");
+    private SelenideElement tblExchangeRates = $x("//*[@id=\"widget123\"]/div[1]/article/div[1]/div/table");
+
     private static final String COLUMNS_HEADERS_X_PATH = "thead//td";
     private static final String ROWS_HEADERS_X_PATH = "tbody/tr/*[1]";
     private static final HashMap<Currency, String> CURRENCIES_MAPPER = new HashMap<>();
@@ -33,7 +34,7 @@ public class PrivatBankCurrencyRatesPanel extends CurrencyRatesPanelCurrencyType
     }
 
     public SelenideElement getExchangeRatesTable() {
-        return TBL_EXCHANGE_RATES;
+        return tblExchangeRates;
     }
 
     public String getColumnsHeadersXPath() {

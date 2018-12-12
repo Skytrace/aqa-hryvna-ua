@@ -45,7 +45,6 @@ public class Utils {
                 .map(SelenideElement::getText)
                 .map(String::trim)
                 .collect(Collectors.toList());
-        System.out.println(headersNamesList);
 
         return (ArrayList<String>) headersNamesList;
     }

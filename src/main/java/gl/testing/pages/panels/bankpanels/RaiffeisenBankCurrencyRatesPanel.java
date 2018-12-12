@@ -4,15 +4,14 @@ import com.codeborne.selenide.SelenideElement;
 import gl.testing.pages.enums.Currency;
 import gl.testing.pages.enums.Type;
 import gl.testing.pages.panels.CurrencyRatesPanelCurrencyType;
-import gl.testing.utils.Utils;
 
-import java.math.BigDecimal;
 import java.util.HashMap;
 
 import static com.codeborne.selenide.Selenide.$x;
 
 public class RaiffeisenBankCurrencyRatesPanel extends CurrencyRatesPanelCurrencyType {
-    private static final SelenideElement TBL_EXCHANGE_RATES = $x("//*[@id=\"bar-center\"]/div[1]//div[1]/table");
+    private SelenideElement tblExchangeRates = $x("//*[@id=\"bar-center\"]/div[1]//div[1]/table");
+
     private static final String COLUMNS_HEADERS_X_PATH = "tbody//th";
     private static final String ROWS_HEADERS_X_PATH = "tbody/tr/*[1]";
     private static final HashMap<Currency, String> CURRENCIES_MAPPER = new HashMap<>();
@@ -34,7 +33,7 @@ public class RaiffeisenBankCurrencyRatesPanel extends CurrencyRatesPanelCurrency
     }
 
     public SelenideElement getExchangeRatesTable() {
-        return TBL_EXCHANGE_RATES;
+        return tblExchangeRates;
     }
 
     public String getColumnsHeadersXPath() {

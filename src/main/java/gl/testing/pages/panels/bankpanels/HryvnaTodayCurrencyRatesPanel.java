@@ -2,20 +2,17 @@ package gl.testing.pages.panels.bankpanels;
 
 import com.codeborne.selenide.SelenideElement;
 import gl.testing.pages.enums.Bank;
-import gl.testing.pages.enums.Currency;
 import gl.testing.pages.enums.Type;
 import gl.testing.pages.panels.CurrencyRatesPanelBankType;
-import gl.testing.utils.Utils;
 
-import java.math.BigDecimal;
 import java.util.HashMap;
 
 import static com.codeborne.selenide.Selenide.$x;
 
 public class HryvnaTodayCurrencyRatesPanel extends CurrencyRatesPanelBankType {
     private SelenideElement btnExpandTable = $x("//a[starts-with(@class, 'btn-light show-more-banks')]");
+    private SelenideElement tblExchangeRates = $x("//*[@id=\"banks\"]/div/table");
 
-    private static final SelenideElement TBL_EXCHANGE_RATES = $x("//*[@id=\"banks\"]/div/table");
     private static final String COLUMNS_HEADERS_X_PATH = "thead/tr/th/div/span";
     private static final String ROWS_HEADERS_X_PATH = "tbody/tr//span[@class='banks-name']";
     private static final HashMap<Bank, String> BANKS_MAPPER = new HashMap<>();
@@ -48,7 +45,7 @@ public class HryvnaTodayCurrencyRatesPanel extends CurrencyRatesPanelBankType {
     }
 
     public SelenideElement getExchangeRatesTable() {
-        return TBL_EXCHANGE_RATES;
+        return tblExchangeRates;
     }
 
     public String getColumnsHeadersXPath() {
