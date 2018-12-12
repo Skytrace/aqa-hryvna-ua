@@ -1,7 +1,8 @@
 package gl.testing.pages.enums;
 
-public enum Bank {
+public enum Bank implements ParamType {
     PRIVATBANK,
     RAIFFEIZENBANK,
-    PROCREDITBANK
+    PROCREDITBANK,
+    CREDITDNEPRBANK
 }

@@ -1,6 +1,6 @@
 package gl.testing.pages.enums;
 
-public enum Type {
+public enum Type implements ParamType {
     BUY,
     SELL
 }
