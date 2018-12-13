@@ -4,5 +4,6 @@ public enum Bank implements ParamType {
     PRIVATBANK,
     RAIFFEIZENBANK,
     PROCREDITBANK,
-    CREDITDNEPRBANK
+    CREDITDNEPRBANK,
+    NATIONALBANK
 }

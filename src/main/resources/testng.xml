@@ -8,6 +8,7 @@
             <class name="gl.testing.tests.PrivatBankTest" />
             <class name="gl.testing.tests.CreditDneprBankTest" />
             <class name="gl.testing.tests.RaiffeisenBankTest" />
+            <class name="gl.testing.tests.NationalBankTest" />
         </classes>
     </test>
 </suite>

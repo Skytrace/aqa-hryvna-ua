@@ -22,6 +22,7 @@ public class HryvnaTodayCurrencyRatesPanel extends CurrencyRatesPanelBankType {
         BANKS_MAPPER.put(Bank.CREDITDNEPRBANK, "Кредит Дніпро");
         BANKS_MAPPER.put(Bank.PROCREDITBANK, "ПроКредит Банк");
         BANKS_MAPPER.put(Bank.RAIFFEIZENBANK, "Райффайзен Банк Аваль");
+        BANKS_MAPPER.put(Bank.NATIONALBANK, "Національний банк України");
 
         TYPES_MAPPER.put(Type.BUY, "Купівля");
         TYPES_MAPPER.put(Type.SELL, "Продаж");

@@ -5,13 +5,12 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 
 public class Utils {
     public static BigDecimal getNumber(String s) {
         try {
-            return new BigDecimal(s).setScale(4, RoundingMode.DOWN);
+            return new BigDecimal(s).setScale(2, RoundingMode.DOWN);
         } catch (NumberFormatException e) {
             System.out.println("Cannot convert to number value: " + s);
             return null;
