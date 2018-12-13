@@ -20,7 +20,7 @@ public abstract class CurrencyRatesPanelCurrencyType implements CurrencyRatesPan
         return getRate((Currency) currency, (Type) type);
     }
 
-    public BigDecimal getRate(Currency currency, Type type) {
+    private BigDecimal getRate(Currency currency, Type type) {
         if (currency == null || type == null) {
             throw new IllegalArgumentException("Unknown currency or type.");
         }

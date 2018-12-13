@@ -19,7 +19,7 @@ public abstract class CurrencyRatesPanelBankType implements CurrencyRatesPanel {
         return getRate((Bank) bank, (Type) type);
     }
 
-    public BigDecimal getRate(Bank bank, Type type) {
+    private BigDecimal getRate(Bank bank, Type type) {
         if (bank == null || type == null) {
             throw new IllegalArgumentException("Unknown bank or type.");
         }

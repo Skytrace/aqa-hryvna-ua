@@ -1,9 +1,18 @@
 package gl.testing.pages.enums;
 
 public enum Bank implements ParamType {
+    NATIONALBANK,
     PRIVATBANK,
     RAIFFEIZENBANK,
-    PROCREDITBANK,
     CREDITDNEPRBANK,
-    NATIONALBANK
+    OSCHADBANK,
+    CREDITAGRICOLEBANK,
+    UKRSIBBANK,
+    KREDOBANK,
+    UKREXIMBANK,
+    OTPBANK,
+    IDEABANK,
+    PROCREDITBANK,
+    PUMBBANK,
+    PIVDENNYIBANK
 }
