@@ -1,13 +1,14 @@
 package gl.testing.pages;
 
 import com.codeborne.selenide.SelenideElement;
+import gl.testing.utils.Utils;
 
 import java.math.BigDecimal;
 
 import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.$;
 
-public class ProcreditbankPage {
+public class ProcreditBankPage {
     private static int COL_IDX_BUY = 2;
     private static int COL_IDX_SELL = 3;
     private static int ROW_IDX_USD = 2;
@@ -23,27 +24,18 @@ public class ProcreditbankPage {
     }
 
     public BigDecimal getRateBuyUSD() {
-        return getNumber(rateBuyUSD.text());
+        return Utils.getNumber(rateBuyUSD.text());
     }
 
     public BigDecimal getRateSellUSD() {
-        return getNumber(rateSellUSD.text());
+        return Utils.getNumber(rateSellUSD.text());
     }
 
     public BigDecimal getRateBuyEUR() {
-        return getNumber(rateBuyEUR.text());
+        return Utils.getNumber(rateBuyEUR.text());
     }
 
     public BigDecimal getRateSellEUR() {
-        return getNumber(rateSellEUR.text());
-    }
-
-    private static BigDecimal getNumber(String s) {
-        try {
-            return new BigDecimal(s);
-        } catch (NumberFormatException e) {
-            System.out.println("Cannot convert to number value: " + s);
-            return null;
-        }
+        return Utils.getNumber(rateSellEUR.text());
     }
 }

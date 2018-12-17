@@ -1,6 +1,6 @@
 package gl.testing.pages.enums;
 
-public enum Currency {
+public enum Currency implements ParamType {
     USD,
     EUR
 }
