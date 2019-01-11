@@ -3,13 +3,13 @@ package gl.testing.pages.panels.bankpanels;
 import com.codeborne.selenide.SelenideElement;
 import gl.testing.pages.enums.Bank;
 import gl.testing.pages.enums.Type;
-import gl.testing.pages.panels.CurrencyRatesPanelBankType;
+import gl.testing.pages.panels.CurrencyRatesPanelTable2;
 
 import java.util.HashMap;
 
 import static com.codeborne.selenide.Selenide.$x;
 
-public class HryvnaTodayCurrencyRatesPanel extends CurrencyRatesPanelBankType {
+public class HryvnaTodayCurrencyRatesPanel extends CurrencyRatesPanelTable2 {
     private SelenideElement btnExpandTable = $x("//a[starts-with(@class, 'btn-light show-more-banks')]");
     private SelenideElement tblExchangeRates = $x("//*[@id=\"banks\"]/div/table");
 

@@ -2,8 +2,6 @@ package gl.testing.tests;
 
 import gl.testing.pages.HryvnaTodayPage;
 import gl.testing.pages.OschadBankPage;
-import gl.testing.pages.enums.Currency;
-import gl.testing.pages.enums.Type;
 import org.testng.annotations.Test;
 
 import java.math.BigDecimal;
@@ -24,11 +22,11 @@ public class OschadBankTest extends BasicSteps {
         BigDecimal expectedSellUsd = getExpectedRate(oschadBankPage, USD, SELL);
 
         HryvnaTodayPage hryvnaTodayPage = new HryvnaTodayPage();
-        BigDecimal actualBuyUsd = getActualRate(hryvnaTodayPage, USD, OSCHADBANK, BUY);
-        BigDecimal actualSellUsd = getActualRate(hryvnaTodayPage, USD, OSCHADBANK, SELL);
+        BigDecimal actualBuyUsd = getActualRate(hryvnaTodayPage, OSCHADBANK, USD, BUY);
+        BigDecimal actualSellUsd = getActualRate(hryvnaTodayPage, OSCHADBANK, USD, SELL);
 
-        assertEquals(actualBuyUsd, expectedBuyUsd, "Actual rate is not as expected");
-        assertEquals(actualSellUsd, expectedSellUsd, "Actual rate is not as expected");
+        assertEquals(actualBuyUsd, expectedBuyUsd, "Actual rate {currency=USD, type=BUY} is not as expected;");
+        assertEquals(actualSellUsd, expectedSellUsd, "Actual rate {currency=USD, type=SELL} is not as expected;");
     }
 
     @Test(description = "Exchange rate test: OschadBank vs HryvnaToday; currency: EUR")
@@ -38,14 +36,10 @@ public class OschadBankTest extends BasicSteps {
         BigDecimal expectedSellEur = getExpectedRate(oschadBankPage, EUR, SELL);
 
         HryvnaTodayPage hryvnaTodayPage = new HryvnaTodayPage();
-        BigDecimal actualBuyEur = getActualRate(hryvnaTodayPage, EUR, OSCHADBANK, BUY);
-        BigDecimal actualSellEur = getActualRate(hryvnaTodayPage, EUR, OSCHADBANK, SELL);
+        BigDecimal actualBuyEur = getActualRate(hryvnaTodayPage, OSCHADBANK, EUR, BUY);
+        BigDecimal actualSellEur = getActualRate(hryvnaTodayPage, OSCHADBANK, EUR, SELL);
 
-        assertEquals(actualBuyEur, expectedBuyEur, "Actual rate is not as expected");
-        assertEquals(actualSellEur, expectedSellEur, "Actual rate is not as expected");
-    }
-
-    public BigDecimal getExpectedRate(OschadBankPage page, Currency currency, Type type) {
-        return page.getCurrencyRatesPanel().getRate(currency, type);
+        assertEquals(actualBuyEur, expectedBuyEur, "Actual rate {currency=EUR, type=BUY} is not as expected;");
+        assertEquals(actualSellEur, expectedSellEur, "Actual rate {currency=EUR, type=SELL} is not as expected;");
     }
 }

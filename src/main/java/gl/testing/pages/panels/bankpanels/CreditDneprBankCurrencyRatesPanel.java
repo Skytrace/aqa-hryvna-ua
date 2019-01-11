@@ -3,13 +3,13 @@ package gl.testing.pages.panels.bankpanels;
 import com.codeborne.selenide.SelenideElement;
 import gl.testing.pages.enums.Currency;
 import gl.testing.pages.enums.Type;
-import gl.testing.pages.panels.CurrencyRatesPanelCurrencyType;
+import gl.testing.pages.panels.CurrencyRatesPanelTable1;
 
 import java.util.HashMap;
 
 import static com.codeborne.selenide.Selenide.*;
 
-public class CreditDneprBankCurrencyRatesPanel extends CurrencyRatesPanelCurrencyType {
+public class CreditDneprBankCurrencyRatesPanel extends CurrencyRatesPanelTable1 {
     private SelenideElement tblExchangeRates = $x("//*[@id=\"all\"]//div[2]/table[2]");
 
     private static final String COLUMNS_HEADERS_X_PATH = "thead//th";

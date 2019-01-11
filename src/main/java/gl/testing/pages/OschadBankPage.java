@@ -4,7 +4,7 @@ import gl.testing.pages.panels.bankpanels.OschadBankCurrencyRatesPanel;
 
 import static com.codeborne.selenide.Selenide.*;
 
-public class OschadBankPage {
+public class OschadBankPage implements BankPage {
     public OschadBankPage() {
         open("https://www.oschadbank.ua/ua/");
     }

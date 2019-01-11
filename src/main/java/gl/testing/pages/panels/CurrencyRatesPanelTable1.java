@@ -10,7 +10,7 @@ import gl.testing.utils.Utils;
 import java.math.BigDecimal;
 import java.util.HashMap;
 
-public abstract class CurrencyRatesPanelCurrencyType implements CurrencyRatesPanel {
+public abstract class CurrencyRatesPanelTable1 implements CurrencyRatesPanelTable {
 
     public abstract HashMap<Currency, String> getCurrenciesMapper();
 
