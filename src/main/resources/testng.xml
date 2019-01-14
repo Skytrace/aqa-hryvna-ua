@@ -3,14 +3,8 @@
 
 <suite name="Default" thread-count="1">
     <test name="Test">
-        <parameter name="selenide.browser" value="firefox" />
         <packages>
             <package name="gl.testing.tests"/>
         </packages>
-        <!--
-                <classes>
-                    <class name="gl.testing.tests.PrivatBankTest" />
-                </classes>
-        -->
     </test>
 </suite>

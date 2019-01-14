@@ -2,7 +2,10 @@ package gl.testing.pages.panels.bankpanels;
 
 import com.codeborne.selenide.SelenideElement;
 import gl.testing.pages.enums.Currency;
+import gl.testing.pages.enums.ParamType;
 import gl.testing.pages.enums.Type;
+import gl.testing.pages.panels.CurrencyRatesPanel;
+import gl.testing.pages.panels.CurrencyRatesPanelTable1;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -10,7 +13,7 @@ import java.util.HashMap;
 
 import static com.codeborne.selenide.Selenide.$x;
 
-public class OschadBankCurrencyRatesPanel {
+public class OschadBankCurrencyRatesPanel implements CurrencyRatesPanel {
     private static final HashMap<String, String> LOCATORS_MAPPER = new HashMap<>();
 
     static {
@@ -24,5 +27,10 @@ public class OschadBankCurrencyRatesPanel {
         SelenideElement rate = $x(String.format("//strong[@class='%s']", LOCATORS_MAPPER.get(currency + "_" + type)));
 
         return new BigDecimal(rate.text().replace(",", ".")).setScale(2, RoundingMode.HALF_UP);
+    }
+
+    @Override
+    public BigDecimal getRate(ParamType val1, ParamType val2) {
+        return null;
     }
 }

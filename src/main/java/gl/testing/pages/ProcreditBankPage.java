@@ -5,7 +5,7 @@ import gl.testing.pages.panels.bankpanels.ProcreditBankCurrencyRatesPanel;
 
 import static com.codeborne.selenide.Selenide.open;
 
-public class ProcreditBankPage {
+public class ProcreditBankPage implements BankPage {
     public ProcreditBankPage() {
         open("https://www.procreditbank.com.ua/currency-exchange-rates-cards/archive-exchange-rates/");
     }

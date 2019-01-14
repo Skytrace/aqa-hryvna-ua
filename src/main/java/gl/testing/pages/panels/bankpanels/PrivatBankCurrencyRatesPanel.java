@@ -5,11 +5,11 @@ import static com.codeborne.selenide.Selenide.$x;
 import com.codeborne.selenide.SelenideElement;
 import gl.testing.pages.enums.Currency;
 import gl.testing.pages.enums.Type;
-import gl.testing.pages.panels.CurrencyRatesPanelCurrencyType;
+import gl.testing.pages.panels.CurrencyRatesPanelTable1;
 
 import java.util.HashMap;
 
-public class PrivatBankCurrencyRatesPanel extends CurrencyRatesPanelCurrencyType {
+public class PrivatBankCurrencyRatesPanel extends CurrencyRatesPanelTable1 {
     private SelenideElement tblExchangeRates = $x("//*[@id=\"widget123\"]/div[1]/article/div[1]/div/table");
 
     private static final String COLUMNS_HEADERS_X_PATH = "thead//td";

@@ -2,8 +2,6 @@ package gl.testing.tests;
 
 import gl.testing.pages.HryvnaTodayPage;
 import gl.testing.pages.NationalBankPage;
-import gl.testing.pages.enums.Currency;
-import gl.testing.pages.enums.Type;
 import org.testng.annotations.Test;
 import java.math.BigDecimal;
 import static gl.testing.pages.enums.Bank.NATIONALBANK;
@@ -22,11 +20,11 @@ public class NationalBankTest extends BasicSteps {
         BigDecimal expectedSellUsd = getExpectedRate(nationalBankPage, USD, SELL);
 
         HryvnaTodayPage hryvnaTodayPage = new HryvnaTodayPage();
-        BigDecimal actualBuyUsd = getActualRate(hryvnaTodayPage, USD, NATIONALBANK, BUY);
-        BigDecimal actualSellUsd = getActualRate(hryvnaTodayPage, USD, NATIONALBANK, SELL);
+        BigDecimal actualBuyUsd = getActualRate(hryvnaTodayPage, NATIONALBANK, USD, BUY);
+        BigDecimal actualSellUsd = getActualRate(hryvnaTodayPage, NATIONALBANK, USD, SELL);
 
-        assertEquals(actualBuyUsd, expectedBuyUsd, "Actual rate is not as expected");
-        assertEquals(actualSellUsd, expectedSellUsd, "Actual rate is not as expected");
+        assertEquals(actualBuyUsd, expectedBuyUsd, "Actual rate {currency=USD, type=BUY} is not as expected;");
+        assertEquals(actualSellUsd, expectedSellUsd, "Actual rate {currency=USD, type=SELL} is not as expected;");
     }
 
     @Test(description = "Exchange rate test: NationalBank vs HryvnaToday; currency: EUR")
@@ -36,14 +34,10 @@ public class NationalBankTest extends BasicSteps {
         BigDecimal expectedSellEur = getExpectedRate(nationalBankPage, EUR, SELL);
 
         HryvnaTodayPage hryvnaTodayPage = new HryvnaTodayPage();
-        BigDecimal actualBuyEur = getActualRate(hryvnaTodayPage, EUR, NATIONALBANK, BUY);
-        BigDecimal actualSellEur = getActualRate(hryvnaTodayPage, EUR, NATIONALBANK, SELL);
+        BigDecimal actualBuyEur = getActualRate(hryvnaTodayPage, NATIONALBANK, EUR, BUY);
+        BigDecimal actualSellEur = getActualRate(hryvnaTodayPage, NATIONALBANK, EUR, SELL);
 
-        assertEquals(actualBuyEur, expectedBuyEur, "Actual rate is not as expected");
-        assertEquals(actualSellEur, expectedSellEur, "Actual rate is not as expected");
-    }
-
-    public BigDecimal getExpectedRate(NationalBankPage page, Currency currency, Type type) {
-        return page.getCurrencyRatesPanel().getRate(currency, type);
+        assertEquals(actualBuyEur, expectedBuyEur, "Actual rate {currency=EUR, type=BUY} is not as expected;");
+        assertEquals(actualSellEur, expectedSellEur, "Actual rate {currency=EUR, type=SELL} is not as expected;");
     }
 }

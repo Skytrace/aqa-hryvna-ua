@@ -4,7 +4,7 @@ import static com.codeborne.selenide.Selenide.open;
 
 import gl.testing.pages.panels.bankpanels.PrivatBankCurrencyRatesPanel;
 
-public class PrivatBankPage {
+public class PrivatBankPage implements BankPage {
     public PrivatBankPage() {
         open("https://privatbank.ua");
     }

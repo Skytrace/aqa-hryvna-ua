@@ -7,7 +7,7 @@ import java.util.Date;
 
 import static com.codeborne.selenide.Selenide.open;
 
-public class NationalBankPage {
+public class NationalBankPage implements BankPage {
     public NationalBankPage() {
         String today = new SimpleDateFormat("dd.MM.yyyy").format(new Date());
 

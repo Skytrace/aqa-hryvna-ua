@@ -4,7 +4,7 @@ import gl.testing.pages.panels.bankpanels.RaiffeisenBankCurrencyRatesPanel;
 
 import static com.codeborne.selenide.Selenide.open;
 
-public class RaiffeisenBankPage {
+public class RaiffeisenBankPage implements BankPage {
     public RaiffeisenBankPage() {
         open("https://www.aval.ua/en/personal/everyday/exchange/exchange/");
     }
