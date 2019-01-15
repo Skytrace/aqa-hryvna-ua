@@ -54,7 +54,10 @@
                         -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
                     </argLine>
                     <suiteXmlFiles>
-                        <suiteXmlFile>src/main/resources/testng.xml</suiteXmlFile>
+                        <suiteXmlFile>src/main/resources/testng1.xml</suiteXmlFile>
+                        <suiteXmlFile>src/main/resources/testng2.xml</suiteXmlFile>
+                        <suiteXmlFile>src/main/resources/testng3.xml</suiteXmlFile>
+                        <suiteXmlFile>src/main/resources/testng4.xml</suiteXmlFile>
                     </suiteXmlFiles>
                 </configuration>
                 <dependencies>

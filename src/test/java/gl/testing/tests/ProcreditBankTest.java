@@ -13,6 +13,7 @@ import static gl.testing.pages.enums.Type.BUY;
 import static gl.testing.pages.enums.Type.SELL;
 import static org.testng.Assert.assertEquals;
 
+@Test(groups = {"unstable"})
 public class ProcreditBankTest extends BasicSteps {
     @Test(description = "Exchange rate test: ProcreditBank vs HryvnaToday; currency: USD")
     public void testUsdExchange() {

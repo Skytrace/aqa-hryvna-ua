@@ -29,8 +29,7 @@ public class OschadBankCurrencyRatesPanel implements CurrencyRatesPanel {
         return new BigDecimal(rate.text().replace(",", ".")).setScale(2, RoundingMode.HALF_UP);
     }
 
-    @Override
-    public BigDecimal getRate(ParamType val1, ParamType val2) {
-        return null;
+    public BigDecimal getRate(ParamType currency, ParamType type) {
+        return getRate((Currency) currency, (Type) type);
     }
 }
